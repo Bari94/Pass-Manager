@@ -1,11 +1,24 @@
+import sys
 import tkinter as tk
 
-# create main_window
-main = tk.Tk()
+class Application(tk.Frame):
+    D_LOG = True
+    def __init__(self, main):
+        self.main = main
 
-# mian_window title
-main.title("Pass Manager")
-main.geometry("600x800")
+        self.create_widgets()
+    
+    def create_widgets(self):
+         print('DEBUG:----{}----'.format(sys._getframe().f_code.co_name)) if self.D_LOG else ""
 
-# ウィンドウを表示する
-main.mainloop()
+
+# main_window
+root = tk.Tk()
+apps = Application(root)
+# title
+apps.main.title("Pass Manager")
+# window size
+apps.main.geometry("800x400")
+
+# show window
+apps.main.mainloop()
