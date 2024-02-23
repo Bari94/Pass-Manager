@@ -2,23 +2,32 @@ import sys
 import tkinter as tk
 
 class Application(tk.Frame):
-    D_LOG = True
-    def __init__(self, main):
-        self.main = main
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.pack()
 
         self.create_widgets()
     
     def create_widgets(self):
-         print('DEBUG:----{}----'.format(sys._getframe().f_code.co_name)) if self.D_LOG else ""
+        pw_main = tk.PanedWindow(self.master)
+        pw_main.pack(expand=True, fill=tk.BOTH)
+
+        left_frame = tk.PanedWindow(pw_main, width = 300, bg="red")
+        pw_main.add(left_frame)
+        right_frame = tk.PanedWindow(pw_main, width = 300, bg="yellow")
+        pw_main.add(right_frame)
 
 
-# main_window
+
+
+# master_window
 root = tk.Tk()
-apps = Application(root)
+apps = Application(master=root)
 # title
-apps.main.title("Pass Manager")
+apps.master.title("Pass Manager")
 # window size
-apps.main.geometry("800x400")
+apps.master.geometry("600x400")
 
 # show window
-apps.main.mainloop()
+apps.mainloop()
