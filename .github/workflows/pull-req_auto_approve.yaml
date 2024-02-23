@@ -26,4 +26,4 @@ jobs:
       # Pull RequestをApproveする
       - uses: hmarr/auto-approve-action@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
